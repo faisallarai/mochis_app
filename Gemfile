@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'bower-rails'
+gem 'angular-rails-templates'
+gem 'sprockets', '3.6.3'
 
 group :development, :test do
   gem "rspec-rails", "~> 3.5.1"
