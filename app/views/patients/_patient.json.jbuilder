@@ -1,0 +1,1 @@
+json.(patient, :id, :last_name, :first_name, :dob, :phone_number, :email_address)

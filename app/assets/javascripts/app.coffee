@@ -1,56 +1,34 @@
-mochis = angular.module('mochis_app',[
+mochis_app = angular.module('mochis_app',[
   'templates',
   'ngRoute',
-  'controllers'
+  'ngResource',
+  'controllers',
+  'angular-flash.service',
+  'angular-flash.flash-alert-directive'
 ])
 
-mochis.config(['$routeProvider',
-  ($routeProvider)->
+mochis_app.config([ '$routeProvider', 'flashProvider',
+  ($routeProvider,flashProvider)->
+
+    flashProvider.errorClassnames.push("alert-danger")
+    flashProvider.warnClassnames.push("alert-warning")
+    flashProvider.infoClassnames.push("alert-info")
+    flashProvider.successClassnames.push("alert-success")
+
     $routeProvider
       .when('/',
         templateUrl: "index.html"
         controller: 'PatientsController'
+      ).when('/patients/new',
+        templateUrl: "form.html"
+        controller: 'PatientController'
+      ).when('/patients/:patientId',
+        templateUrl: "show.html"
+        controller: 'PatientController'
+      ).when('/patients/:patientId/edit',
+        templateUrl: "form.html"
+        controller: 'PatientController'
       )
 ])
 
-patients = [ 
-  {
-    id: 1
-    last_name: 'Mohammed-Rabiu'
-    first_name: 'Anissatu'
-    other_name: ''
-    dob: '10-01-1987'
-    phone_number: '0246559067'
-    email_address: 'anissatumohammedrabiu@gmail.com'
-  },
-  {
-    id: 2
-    last_name: 'Fareed'
-    first_name: 'Safia'
-    other_name: ''
-    dob: '10-01-1984'
-    phone_number: '0240856309'
-    email_address: 'safiagmail.com'
-  },
-  {
-    id: 3
-    last_name: 'Aziz'
-    first_name: 'Stephanie'
-    other_name: ''
-    dob: '10-01-1989'
-    phone_number: '0208655198'
-    email_address: 'stephanie@gmail.com'
-  },
-]
-
 controllers = angular.module('controllers',[])
-controllers.controller("PatientsController",['$scope','$routeParams','$location',
-  ($scope,$routeParams,$location)->
-    $scope.search = (keywords)-> $location.path("/").search('keywords',keywords)
-
-    if $routeParams.keywords
-      keywords = $routeParams.keywords.toLowerCase()
-      $scope.patients = patients.filter (patient)-> patient.last_name.toLowerCase().indexOf(keywords) != -1
-    else
-      $scope.patients = []
-])

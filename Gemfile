@@ -31,13 +31,19 @@ gem 'jbuilder', '~> 2.5'
 gem 'bower-rails'
 gem 'angular-rails-templates'
 gem 'sprockets', '3.6.3'
+gem 'chromedriver-helper'
+
 
 group :development, :test do
+  gem 'rspec'
   gem "rspec-rails", "~> 3.5.1"
   gem "factory_girl_rails", "~> 4.0"
   gem "capybara"
   gem "database_cleaner"
   gem "selenium-webdriver"
+  gem "teaspoon"
+  gem 'teaspoon-jasmine'
+  gem 'phantomjs'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
