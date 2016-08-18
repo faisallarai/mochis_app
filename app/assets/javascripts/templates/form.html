@@ -1,0 +1,29 @@
+<section>
+  <aside class="flash row">
+    <article flash-alert duration="0" active-class="alert" class="col-md-6 col-md-offset-3">
+      {{flash.message}}
+    </article>
+  </aside>
+  <form class="form-horizontal" role="form" class="edit-user">
+    <div class="form-group" ng-class="{'has-warning has-feedback':errors.name}">
+      <label for="last_name" class="col-md-2 control-label col-md-offset-2">Last Name</label>
+      <div class="col-md-5">
+        <input type="text" name="last_name" class="form-control" placeholder="e.g. Mohammed-Rabiu" ng-model="patient.last_name">
+      </div>
+    </div>  
+    <div class="form-group" ng-class="{'has-warning has-feedback':errors.name}">
+      <label for="first_name" class="col-md-2 control-label col-md-offset-2">First Name</label>
+      <div class="col-md-5">
+        <input type="text" name="first_name" class="form-control" placeholder="e.g. Anissatu" ng-model="patient.first_name">
+      </div>
+    </div>
+    <div class="form-group">
+      <div col-md-offset-2 col-md-3>
+        <button class="btn btn-default btn-danger" ng-click="cancel()">Cancel</button>
+      </div>
+      <div class="col-md-offset-2 col-md-3">
+        <button class="btn btn-primary" ng-click="save()">Save</button>
+      </div>
+    </div>
+  </form>
+</section>

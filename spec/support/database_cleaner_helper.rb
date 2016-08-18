@@ -20,9 +20,6 @@ RSpec.configure do |config|
 
   config.before(:each) do |ex|
     DatabaseCleaner.start
-    self.use_transactional_fixtures = false
-    ex.run
-    self.use_transactional_fixtures = true
   end
 
   config.after(:each) do

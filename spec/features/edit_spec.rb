@@ -3,7 +3,7 @@ require 'rails_helper'
 feature "Creating editing, and deleting a patient", js: true do
   scenario "CRUD a patient" do
     visit '/'
-    click_on "New Patient"
+    click_on "New Patient..."
 
     fill_in "last_name", with: "Wilson"
     fill_in "first_name", with: "Francisca"
@@ -27,8 +27,12 @@ feature "Creating editing, and deleting a patient", js: true do
     fill_in "keywords", with: "Ahmed-Taymiyya"
     click_on "Search"
 
+    click_on "Ahmed-Taymiyya Unayssa"
+
     click_on "Delete"
 
-    expect(Patient.find_by_name("Ahmed-Taymiyya")).to be_nil
+    sleep 1
+
+    expect(Patient.find_by_last_name("Ahmed-Taymiyya")).to be_nil
   end
 end

@@ -5,10 +5,11 @@
   <form>
     <div class="form-group col-md-6 col-md-offset-3">
       <label for="keywords" class="sr-only">Keywords</label>
-      <input ng-model="keywords" name="keywords" type="text" autofocus class="form-control" placeholder="Patient Last Name, e.g. Anissatu Mohammed-Rabiu">
+      <input ng-model="keywords" name="keywords" type="text" autofocus class="form-control" placeholder="Patient Last Name, e.g. Mohammed-Rabiu">
     </div>
     <div class="form-group col-md-6 col-md-offset-3 text-center">
       <button ng-click="search(keywords)" class="btn btn-primary btn-lg">Search</button>
+      <button ng-click="newPatient()" class="btn btn-info btn-lg">New Patient...</button>
     </div>
   </form>
 </section>
@@ -18,10 +19,9 @@
   <ul class="list-unstyled">
     <li ng-repeat="patient in patients">
       <section class="well col-md-6 col-md-offset-3">
-        <h1 class="h3 col-md-6 text-right" style="margin-top: 0"><a href="#">{{patient.last_name}} {{patient.first_name}}</a></h1>
+        <h1 class="h3 col-md-6 text-right" style="margin-top: 0"><a href ng-click="view(patient.id)">{{patient.last_name}} {{patient.first_name}}</a></h1>
         <div class="col-md-6">
-          <button class="btn btn-info">Edit</button>
-          <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-info" ng-click="edit(patient.id)">Edit</button>
         </div>
       </section>
     </li>
